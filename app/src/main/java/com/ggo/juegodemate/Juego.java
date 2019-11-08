@@ -70,6 +70,13 @@ public class Juego extends AppCompatActivity {
         if (s == 1){
             rr = n11 - n22;
         }
+
+        if (rr == r){
+            //tostado correcto
+        }
+        else{
+            //tostado incorrecto
+        }
     }
 
 }
