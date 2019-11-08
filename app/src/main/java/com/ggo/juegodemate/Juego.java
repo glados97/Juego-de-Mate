@@ -2,11 +2,13 @@ package com.ggo.juegodemate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Juego extends AppCompatActivity {
     private int n1;
@@ -72,10 +74,11 @@ public class Juego extends AppCompatActivity {
         }
 
         if (rr == r){
-            //tostado correcto
+            Toast.makeText(getBaseContext(), "Correcto", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, Juego.class);
         }
         else{
-            //tostado incorrecto
+            Toast.makeText(getBaseContext(), "Vuelve a intentar!", Toast.LENGTH_SHORT).show();
         }
     }
 

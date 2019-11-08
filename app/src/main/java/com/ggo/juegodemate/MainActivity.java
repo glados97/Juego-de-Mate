@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void llamarC(View v){
-        Intent intent = new Intent( this, Menu.class);
+        Intent intent = new Intent( this, Calculadora.class);
         startActivity(intent);
     }
 }

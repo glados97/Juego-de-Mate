@@ -12,8 +12,8 @@ public class Menu extends AppCompatActivity {
     private Button enviar;
     private EditText n1;
     private EditText n2;
-    private int n11;
-    private int n22;
+    private String n11;
+    private String n22;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class Menu extends AppCompatActivity {
         n1 = (EditText) findViewById(R.id.n1);
         n2 = (EditText) findViewById(R.id.n2);
 
-        n11 =Integer.valueOf(String.valueOf((n1)));
-        n22 =Integer.valueOf(String.valueOf((n2)));
+        n11 =(String.valueOf((n1)));
+        n22 =(String.valueOf((n2)));
 
     }
 
