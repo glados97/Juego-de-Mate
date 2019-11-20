@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|center_horizontal|center_vertical"
-            android:text="Introduce el rango de números"
+            android:text="Bienvenido"
             android:textSize="36sp" />
 
         <LinearLayout
@@ -35,16 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:onClick="onClick"
-                    app:srcCompat="@drawable/numeros" />
 
                 <Button
                     android:id="@+id/numeros"
@@ -60,16 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/calc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:onClick="onClick"
-                    app:srcCompat="@drawable/calculadora" />
 
                 <Button
                     android:id="@+id/calculadora"

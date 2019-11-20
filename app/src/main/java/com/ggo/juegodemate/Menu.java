@@ -14,6 +14,8 @@ public class Menu extends AppCompatActivity {
     private EditText n2;
     private String n11;
     private String n22;
+    private int n111;
+    private int n222;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +26,17 @@ public class Menu extends AppCompatActivity {
         n1 = (EditText) findViewById(R.id.n1);
         n2 = (EditText) findViewById(R.id.n2);
 
-        n11 =(String.valueOf((n1)));
-        n22 =(String.valueOf((n2)));
+        n11 = n1.getText().toString();
+        n111 = Integer.parseInt(n11);
+        n22 = n2.getText().toString();
+        n222 = Integer.parseInt(n22);
 
     }
 
     public void llamarJ(View v){
         Intent intent = new Intent( this, Juego.class);
-        intent.putExtra("n1", (n11));
-        intent.putExtra("n2",(n22));
+        intent.putExtra("n111", (n111));
+        intent.putExtra("n222",(n222));
         startActivity(intent);
     }
 }

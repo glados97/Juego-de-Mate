@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class Juego extends AppCompatActivity {
     private int n1;
     private int n2;
+    //private int num1;
+    //private int num2;
     private TextView sor;
     private TextView numero1;
     private int n11;
@@ -37,14 +39,15 @@ public class Juego extends AppCompatActivity {
         revisar = (Button) findViewById(R.id.revisar);
         respuesta = (EditText) findViewById(R.id.respuesta);
 
-        Operacion();
-
         Bundle extras = getIntent().getExtras();
-        n1 = Integer.parseInt (extras.getString("n1"));
-        n2 = Integer.parseInt (extras.getString("n2"));
+        n1 = extras.getInt("n111");
+        n2 = extras.getInt("n222");
+
+        Operacion(n1, n2);
+
     }
 
-    private void Operacion(){
+    public void Operacion(int n1, int n2){
         int range = n1 - n2 + 1;
         numero1.setText(Integer.toString((int)(Math.random() * range) + n1));
         numero2.setText(Integer.toString((int)(Math.random() * range) + n1));
@@ -60,7 +63,7 @@ public class Juego extends AppCompatActivity {
         }
     }
 
-    private void Res(View v){
+    public void Res(View v){
         r =Integer.valueOf(String.valueOf((respuesta)));
         n11 =Integer.valueOf(String.valueOf((numero1)));
         n22=Integer.valueOf(String.valueOf((numero2)));
