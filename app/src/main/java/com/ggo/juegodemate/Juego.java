@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +14,8 @@ import android.widget.Toast;
 public class Juego extends AppCompatActivity {
     private int n1;
     private int n2;
-    //private int num1;
-    //private int num2;
+    private int num1;
+    private int num2;
     private TextView sor;
     private TextView numero1;
     private int n11;
@@ -23,7 +24,7 @@ public class Juego extends AppCompatActivity {
     private int n22;
     private Button revisar;
     private EditText respuesta;
-    private int r;
+    private String r;
     private int rr;
     private int s;
 
@@ -49,8 +50,16 @@ public class Juego extends AppCompatActivity {
 
     public void Operacion(int n1, int n2){
         int range = n1 - n2 + 1;
-        numero1.setText(Integer.toString((int)(Math.random() * range) + n1));
-        numero2.setText(Integer.toString((int)(Math.random() * range) + n1));
+        do {
+            num1 = (int) ((Math.random() * range) + n1);
+        }while(num1<0);
+        do{
+            num2 = (int)((Math.random() * range) + n2);
+        }while(num2<0);
+
+        numero1.setText(Integer.toString(num1));
+        numero2.setText(Integer.toString(num2));
+
 
         s = (int)(Math.random() * 2);
 
@@ -64,19 +73,20 @@ public class Juego extends AppCompatActivity {
     }
 
     public void Res(View v){
-        r =Integer.valueOf(String.valueOf((respuesta)));
-        n11 =Integer.valueOf(String.valueOf((numero1)));
-        n22=Integer.valueOf(String.valueOf((numero2)));
+        r =(String.valueOf((respuesta)));
+
 
         if(s == 0){
-            rr = n11 + n22;
+            rr = num1 + num2;
         }
 
         if (s == 1){
-            rr = n11 - n22;
+            rr = num1 - num2;
         }
-
-        if (rr == r){
+        String rrr =  Integer.toString(rr);
+        Log.d("aqui", Integer.toString(rr));
+        Log.d("aqui", (rrr));
+        if (rrr == r){
             Toast.makeText(getBaseContext(), "Correcto", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, Juego.class);
         }
