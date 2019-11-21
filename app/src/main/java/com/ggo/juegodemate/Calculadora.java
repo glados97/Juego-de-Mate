@@ -138,95 +138,62 @@ public class Calculadora extends AppCompatActivity {
     }
 
     public void Igual(View v){
-        Log.d("aqui", operacion);
         String[] array = operacion.split(" ");
-        for ( int i = 0; i<array.length;i++){
+
+        for (int i = 0; i<array.length;i++){
+
             if (array[i].equals("+") || array[i].equals("-") || array[i].equals("*") || array[i].equals("/")){
-                if (num2!=0){
-                    if(array[i]=="+"){
-                        resultado = num1 + num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
-
-                    if(array[i]=="-"){
-                        resultado = num1 - num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
-
-                    if(array[i]=="*"){
-                        resultado = num1 * num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
-
-                    if(array[i]=="/"){
-                        resultado = num1 / num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
+                if(array[i].equals("+")){
+                    i++;
+                    num2 =  Double.parseDouble(array[i]);
+                    resultado = num1 + num2;
+                    num1 = resultado;
+                    Log.d("resultado+", String.valueOf(resultado));
                 }
-                else{
-                    if(array[i]=="+"){
-                        i++;
-                        Log.d("aqui", String.valueOf(i));
-                        num2 =  Double.parseDouble(array[i]);
-                        Log.d("aqui", String.valueOf(num2));
-                        Log.d("num2", String.valueOf(num2));
-                        resultado = num1 + num2;
-                        num1 = resultado;
-                    }
 
-                    if(array[i]=="-"){
-                        i++;
-                        num2 =  Double.parseDouble(array[i]);
-                        Log.d("num2", String.valueOf(num2));
-                        resultado = num1 - num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
-
-                    if(array[i]=="*"){
-                        i++;
-                        num2 =  Double.parseDouble(array[i]);
-                        Log.d("num2", String.valueOf(num2));
-                        resultado = num1 * num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
-
-                    if(array[i]=="/"){
-                        i++;
-                        num2 =  Double.parseDouble(array[i]);
-                        Log.d("num2", String.valueOf(num2));
-                        resultado = num1 / num2;
-                        num2 = 0;
-                        num1 = resultado;
-                    }
+                if(array[i].equals("-")){
+                    i++;
+                    num2 =  Double.parseDouble(array[i]);
+                    resultado = num1 - num2;
+                    num1 = resultado;
+                    Log.d("resultado-", String.valueOf(resultado));
                 }
+
+                if(array[i].equals("*")){
+                    i++;
+                    num2 =  Double.parseDouble(array[i]);
+                    resultado = num1 * num2;
+                    num1 = resultado;
+                    Log.d("resultado*", String.valueOf(resultado));
+                }
+
+                if(array[i].equals("/")){
+                    i++;
+                    num2 =  Double.parseDouble(array[i]);
+                    resultado = num1 / num2;
+                    num1 = resultado;
+                    Log.d("resultado/", String.valueOf(resultado));
+                }
+
             }
             else {
-                Log.d("entre", String.valueOf(i));
                 if (num1 == 0) {
                     num1 = Double.parseDouble(array[i]);
-                    Log.d("num1", String.valueOf(num1));
                 }
-                else {
-                    if (num1 != 0) {
-                        num2 = Double.parseDouble(array[i]);
-                        Log.d("num2", String.valueOf(num2));
-                    }
-                }
-
             }
+            Log.d("i", String.valueOf(i));
+            Log.d("resultadototal", String.valueOf(resultado));
         }
-        numero.setText( String.valueOf(resultado));
+        numero.setText(String.valueOf(resultado));
+        num1=0;
+        num2=0;
+        resultado = 0;
     }
 
     public void Regresar(View v){
-        Intent intent = new Intent(this, Juego.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, Juego.class);
+        //startActivity(intent);
+        finish();
     }
 
 
