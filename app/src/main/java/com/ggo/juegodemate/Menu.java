@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
     private Button enviar;
@@ -22,8 +23,8 @@ public class Menu extends AppCompatActivity {
         enviar = (Button) findViewById(R.id.enviar);
         n1 = (EditText) findViewById(R.id.n1);
         n2 = (EditText) findViewById(R.id.n2);
-        n2.setText("0");
-        n1.setText("0");
+        n2.setText("");
+        n1.setText("");
     }
 
     public void llamarJ(View v){
@@ -31,9 +32,17 @@ public class Menu extends AppCompatActivity {
         int n111 = Integer.parseInt(n11);
         String n22 = n2.getText().toString();
         int n222 = Integer.parseInt(n22);
-        Intent intent = new Intent( this, Juego.class);
-        intent.putExtra("n111", (n111));
-        intent.putExtra("n222",(n222));
-        startActivity(intent);
+
+        if(n111<n222){
+            Intent intent = new Intent( this, Juego.class);
+            intent.putExtra("n111", (n111));
+            intent.putExtra("n222",(n222));
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Revisa el rango", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }

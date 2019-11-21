@@ -49,46 +49,69 @@ public class Juego extends AppCompatActivity {
     }
 
     public void Operacion(int n1, int n2){
-        int range = n1 - n2 + 1;
+        respuesta.setText("");
         do {
-            num1 = (int) ((Math.random() * range) + n1);
-        }while(num1<0);
+            num1 = (int) (Math.random() *(n2+1));
+        }while(num1<n1);
         do{
-            num2 = (int)((Math.random() * range) + n2);
-        }while(num2<0);
-
-        numero1.setText(Integer.toString(num1));
-        numero2.setText(Integer.toString(num2));
+            num2 = (int)(Math.random() * (n2+1));
+        }while(num2<n1);
 
 
-        s = (int)(Math.random() * 2);
+        if (num1 >= num2) {
+            numero1.setText(Integer.toString(num1));
+            numero2.setText(Integer.toString(num2));
+        }
+        else{
+            numero1.setText(Integer.toString(num2));
+            numero2.setText(Integer.toString(num1));
+        }
 
-        if(s == 0){
+        s = (int) (Math.random() * 2);
+
+        if (s == 0) {
             signo.setText("+");
+            sor.setText("Suma");
         }
 
-        if (s == 1){
+        if (s == 1) {
             signo.setText("-");
+            sor.setText("Resta");
         }
+
+
+
     }
 
     public void Res(View v){
-        r =(String.valueOf((respuesta)));
+        r =(String.valueOf((respuesta.getText().toString())));
 
+        if (num1 >= num2) {
+            if (s == 0) {
+                rr = num1 + num2;
+            }
 
-        if(s == 0){
-            rr = num1 + num2;
+            if (s == 1) {
+                rr = num1 - num2;
+            }
+        }
+        else{
+            if (s == 0) {
+                rr = num2 + num1;
+            }
+
+            if (s == 1) {
+                rr = num2 - num1;
+            }
         }
 
-        if (s == 1){
-            rr = num1 - num2;
-        }
         String rrr =  Integer.toString(rr);
-        Log.d("aqui", Integer.toString(rr));
-        Log.d("aqui", (rrr));
-        if (rrr == r){
+        Log.d("aquirr", Integer.toString(rr));
+        Log.d("aquir", (r));
+        if (rrr.equals(r)){
             Toast.makeText(getBaseContext(), "Correcto", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, Juego.class);
+            //Intent intent = new Intent(this, Juego.class);
+            Operacion(n1,n2);
         }
         else{
             Toast.makeText(getBaseContext(), "Vuelve a intentar!", Toast.LENGTH_SHORT).show();
