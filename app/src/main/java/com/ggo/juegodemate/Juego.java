@@ -118,4 +118,9 @@ public class Juego extends AppCompatActivity {
         }
     }
 
+    public void Calculadora(View v){
+        Intent intent = new Intent(this, Calculadora.class);
+        onPause();
+        startActivity(intent);
+    }
 }

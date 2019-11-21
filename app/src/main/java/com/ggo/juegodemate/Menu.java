@@ -40,7 +40,7 @@ public class Menu extends AppCompatActivity {
             startActivity(intent);
         }
         else{
-            Toast.makeText(getBaseContext(), "Revisa el rango", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Revisa el rango, hay un error", Toast.LENGTH_SHORT).show();
         }
 
 

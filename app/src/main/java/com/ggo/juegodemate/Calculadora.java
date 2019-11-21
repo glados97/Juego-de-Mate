@@ -2,6 +2,7 @@ package com.ggo.juegodemate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,6 @@ public class Calculadora extends AppCompatActivity {
 
     private Button borrar;
     private Button c;
-    private Button porciento;
     private Button division;
     private Button por;
     private Button mas;
@@ -32,7 +32,10 @@ public class Calculadora extends AppCompatActivity {
     private Button uno;
     private Button cero;
 
-    private String operacion = " ";
+    private String operacion = "";
+    double num1 = 0;
+    double num2 = 0;
+    double resultado = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,6 @@ public class Calculadora extends AppCompatActivity {
 
         borrar = (Button) findViewById(R.id.borrar);
         c = (Button) findViewById(R.id.c);
-        porciento = (Button) findViewById(R.id.porciento);
         division = (Button) findViewById(R.id.division);
         por = (Button) findViewById(R.id.por);
         mas = (Button) findViewById(R.id.mas);
@@ -65,7 +67,6 @@ public class Calculadora extends AppCompatActivity {
 
     public void Uno(View v){
         operacion += "1";
-        Log.d("aqui","aqui");
         numero.setText(operacion+" ");
     }
     public void Dos(View v){
@@ -107,31 +108,27 @@ public class Calculadora extends AppCompatActivity {
 
 
     public void Borrar(View v){
-        operacion = " ";
+        operacion = "";
         numero.setText(operacion);
     }
     public void C(View v){
-        operacion = " ";
-        numero.setText(operacion);
-    }
-    public void Porciento(View v){
-        operacion += "%";
+        operacion = "";
         numero.setText(operacion);
     }
     public void Division(View v){
-        operacion += "/";
+        operacion += " / ";
         numero.setText(operacion);
     }
     public void Por(View v){
-        operacion += "*";
+        operacion += " * ";
         numero.setText(operacion);
     }
     public void Mas(View v){
-        operacion += "+";
+        operacion += " + ";
         numero.setText(operacion);
     }
     public void Menos(View v){
-        operacion += "-";
+        operacion += " - ";
         numero.setText(operacion);
     }
 
@@ -141,11 +138,96 @@ public class Calculadora extends AppCompatActivity {
     }
 
     public void Igual(View v){
-        ///rollo
-        numero.setText(operacion);
+        Log.d("aqui", operacion);
+        String[] array = operacion.split(" ");
+        for ( int i = 0; i<array.length;i++){
+            if (array[i].equals("+") || array[i].equals("-") || array[i].equals("*") || array[i].equals("/")){
+                if (num2!=0){
+                    if(array[i]=="+"){
+                        resultado = num1 + num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="-"){
+                        resultado = num1 - num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="*"){
+                        resultado = num1 * num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="/"){
+                        resultado = num1 / num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+                }
+                else{
+                    if(array[i]=="+"){
+                        i++;
+                        Log.d("aqui", String.valueOf(i));
+                        num2 =  Double.parseDouble(array[i]);
+                        Log.d("aqui", String.valueOf(num2));
+                        Log.d("num2", String.valueOf(num2));
+                        resultado = num1 + num2;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="-"){
+                        i++;
+                        num2 =  Double.parseDouble(array[i]);
+                        Log.d("num2", String.valueOf(num2));
+                        resultado = num1 - num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="*"){
+                        i++;
+                        num2 =  Double.parseDouble(array[i]);
+                        Log.d("num2", String.valueOf(num2));
+                        resultado = num1 * num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+
+                    if(array[i]=="/"){
+                        i++;
+                        num2 =  Double.parseDouble(array[i]);
+                        Log.d("num2", String.valueOf(num2));
+                        resultado = num1 / num2;
+                        num2 = 0;
+                        num1 = resultado;
+                    }
+                }
+            }
+            else {
+                Log.d("entre", String.valueOf(i));
+                if (num1 == 0) {
+                    num1 = Double.parseDouble(array[i]);
+                    Log.d("num1", String.valueOf(num1));
+                }
+                else {
+                    if (num1 != 0) {
+                        num2 = Double.parseDouble(array[i]);
+                        Log.d("num2", String.valueOf(num2));
+                    }
+                }
+
+            }
+        }
+        numero.setText( String.valueOf(resultado));
     }
 
-
+    public void Regresar(View v){
+        Intent intent = new Intent(this, Juego.class);
+        startActivity(intent);
+    }
 
 
 

@@ -66,5 +66,14 @@
             android:onClick="Res"
             android:text="Revisar" />
 
+        <Button
+            android:id="@+id/calculadora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:onClick="Calculadora"
+            android:text="Calculadora" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

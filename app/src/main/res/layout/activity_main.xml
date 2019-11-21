@@ -19,47 +19,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:text="Bienvenido"
-            android:textSize="36sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="Bienvenido"
+                android:textSize="36sp" />
 
-                <Button
-                    android:id="@+id/numeros"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="llamarN"
-                    android:text="¡Vamos a aprender!" />
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
+                android:id="@+id/numeros"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:onClick="llamarN"
+                android:text="¡Vamos a aprender!" />
 
-                <Button
-                    android:id="@+id/calculadora"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="llamarC"
-                    android:text="Calculadora" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/calculadora"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:onClick="llamarC"
+                android:text="Calculadora" />
 
         </LinearLayout>
 
