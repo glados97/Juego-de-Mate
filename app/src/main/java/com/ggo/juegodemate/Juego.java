@@ -70,12 +70,12 @@ public class Juego extends AppCompatActivity {
         s = (int) (Math.random() * 2);
 
         if (s == 0) {
-            signo.setText("+");
+            signo.setText("                +");
             sor.setText("Suma");
         }
 
         if (s == 1) {
-            signo.setText("-");
+            signo.setText("                -");
             sor.setText("Resta");
         }
 

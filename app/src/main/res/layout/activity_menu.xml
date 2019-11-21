@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5663DD9E"
     tools:context=".Menu">
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -12,6 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#00FFFFFF"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +26,7 @@
             android:layout_height="wrap_content"
             android:gravity="center|center_horizontal|center_vertical"
             android:text="Introduce el rango de números"
+            android:textColor="#00A480"
             android:textSize="36sp" />
 
         <LinearLayout
@@ -37,6 +41,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="De"
+                android:textColor="#00A480"
                 android:textSize="30sp" />
 
             <EditText
@@ -55,6 +60,7 @@
                 android:layout_weight="1"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="Al"
+                android:textColor="#00A480"
                 android:textSize="30sp" />
 
             <EditText
@@ -71,9 +77,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#37DE6A"
                 android:clickable="true"
                 android:onClick="llamarJ"
-                android:text="Listo!" />
+                android:text="Listo!"
+                android:textSize="24sp" />
         </LinearLayout>
 
     </LinearLayout>

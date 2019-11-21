@@ -191,8 +191,6 @@ public class Calculadora extends AppCompatActivity {
     }
 
     public void Regresar(View v){
-        //Intent intent = new Intent(this, Juego.class);
-        //startActivity(intent);
         finish();
     }
 
