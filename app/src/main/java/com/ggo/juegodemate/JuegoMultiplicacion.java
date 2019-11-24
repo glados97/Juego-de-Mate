@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -18,6 +19,7 @@ import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class JuegoMultiplicacion extends AppCompatActivity {
 
@@ -28,6 +30,7 @@ public class JuegoMultiplicacion extends AppCompatActivity {
     private ImageView hide;
     private EditText ans;
     private KonfettiView konfettiView;
+    private CountDownTimer ayuda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +67,17 @@ public class JuegoMultiplicacion extends AppCompatActivity {
 
     public void responder(View v){
         if(check_number()){
+            ayuda.cancel();
             error("Correcto!");
             cheers(konfettiView);
+            new CountDownTimer(4000, 1000) {
+
+                public void onTick(long millisUntilFinished) {}
+
+                public void onFinish() {
+                    finish();
+                }
+            }.start();
         }else{
             error("Respuesta incorrecta, intentalo de nuevo");
         }
@@ -73,14 +85,13 @@ public class JuegoMultiplicacion extends AppCompatActivity {
 
 
     public void countdown(){
-        new CountDownTimer(10000, 1000) {
+        ayuda = new CountDownTimer(13000, 1000) {
 
             public void onTick(long millisUntilFinished) {}
 
             public void onFinish() {
                 error("¿Ocupas ayuda?");
                 help();
-
             }
         }.start();
     }

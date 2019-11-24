@@ -39,6 +39,7 @@ public class Multiplicacion extends AppCompatActivity {
             Intent intent = new Intent( this, JuegoMultiplicacion.class);
             intent.putExtra("numero", Integer.valueOf(String.valueOf(numero.getText())));
             startActivity(intent);
+            finish();
         }else{
             error("Solo se puede un número del 1-10.");
         }
