@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void llamarN(View v){
-        Intent intent = new Intent( this, Menu.class);
+        Intent intent = new Intent( this, MultioConteo.class);
         startActivity(intent);
     }
 

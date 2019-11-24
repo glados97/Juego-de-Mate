@@ -53,10 +53,14 @@ public class Juego extends AppCompatActivity {
         do {
             num1 = (int) (Math.random() *(n2+1));
         }while(num1<n1);
+
+        Contar(num1);
+
         do{
             num2 = (int)(Math.random() * (n2+1));
         }while(num2<n1);
 
+        Contar(num2);
 
         if (num1 >= num2) {
             numero1.setText(Integer.toString(num1));
@@ -121,6 +125,13 @@ public class Juego extends AppCompatActivity {
     public void Calculadora(View v){
         Intent intent = new Intent(this, Calculadora.class);
         onPause();
+        startActivity(intent);
+    }
+
+    public void Contar(int b){
+        Intent intent = new Intent(this, conteo.class);
+        onPause();
+        intent.putExtra("numero", (b));
         startActivity(intent);
     }
 }
