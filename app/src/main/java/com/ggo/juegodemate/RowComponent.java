@@ -91,16 +91,16 @@ public class RowComponent extends LinearLayout {
 
         switch (numero) {
             case 1:
-                uno.setBackgroundColor(Color.parseColor("#34D2AF"));
+                uno.setBackgroundColor(Color.parseColor("#9C27B0"));
                 break;
             case 2:
-                dos.setBackgroundColor(Color.parseColor("#34D2AF"));
+                dos.setBackgroundColor(Color.parseColor("#9C27B0"));
                 break;
             case 3:
-                tres.setBackgroundColor(Color.parseColor("#34D2AF"));
+                tres.setBackgroundColor(Color.parseColor("#9C27B0"));
                 break;
             case 4:
-                cuatro.setBackgroundColor(Color.parseColor("#34D2AF"));
+                cuatro.setBackgroundColor(Color.parseColor("#9C27B0"));
                 break;
             default:
                 break;
