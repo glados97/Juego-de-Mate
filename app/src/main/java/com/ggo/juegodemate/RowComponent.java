@@ -21,6 +21,7 @@ public class RowComponent extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.custom_row, this);
+        this.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         initComponents();
     }
 

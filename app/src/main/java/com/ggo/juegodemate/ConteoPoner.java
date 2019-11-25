@@ -1,5 +1,6 @@
 package com.ggo.juegodemate;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,7 +23,7 @@ public class ConteoPoner extends AppCompatActivity {
     private RowComponent [] rows;
     private int count = 0;
     private LinearLayout tabla;
-    private ImageView[] logos = new ImageView[numero];
+    private ImageView[] logos;
     private String[] images_todo;
 
     @Override
@@ -34,7 +35,8 @@ public class ConteoPoner extends AppCompatActivity {
         numero_text = (TextView) findViewById(R.id.numero);
         numero_text.setText(Integer.toString(numero));
         tabla = (LinearLayout) findViewById(R.id.tabla);
-        String[] images_todo = { "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t"};
+        images_todo = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"};
+        logos = new ImageView[numero];
         set_table();
     }
 
@@ -45,7 +47,9 @@ public class ConteoPoner extends AppCompatActivity {
             cantidad_rows++;
         }
 
+        rows = new RowComponent[cantidad_rows];
         instert_components(cantidad_rows);
+        set_image_views(cantidad_rows);
         insert_images(cantidad_rows);
     }
 
@@ -57,14 +61,31 @@ public class ConteoPoner extends AppCompatActivity {
         }
     }
 
+    public void set_image_views(int cantidad_rows){
+        for(int i = 0; i<cantidad_rows;i++){
+            for(int j=1; j<5; j++){
+                rows[i].
+            }
+            rows[i] = createComponent();
+            tabla.addView(rows[i]);
+        }
+    }
+
+
     public RowComponent createComponent(){
-        return new RowComponent(this);
+        RowComponent component = new RowComponent(this);
+        component.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)component.getLayoutParams();
+        layoutParams.height = dpToPx(80);
+        component.setLayoutParams(layoutParams);
+        return component;
     }
 
     public void insert_images(int cantidad_rows){
         for(int i = 0; i<cantidad_rows; i++){
             for(int j = 1; j<5;j++){
                 if(count<=numero){
+                    tabla.addView(logos[count]);
                     int resID = getResources().getIdentifier(images_todo[logo_random()], "drawable", getPackageName());
                     logos[count].setImageResource(resID);
                     rows[i].setImage(j,logos[count]);
@@ -77,6 +98,13 @@ public class ConteoPoner extends AppCompatActivity {
 
     public int logo_random(){
         return (new Random().nextInt(20 - 1 + 1) + 1);
+    }
+
+    public int dpToPx(int dp) {
+        float density = this.getResources()
+                .getDisplayMetrics()
+                .density;
+        return Math.round((float) dp * density);
     }
 
 }
