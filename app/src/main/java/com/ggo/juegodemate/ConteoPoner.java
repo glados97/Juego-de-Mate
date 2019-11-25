@@ -105,7 +105,10 @@ public class ConteoPoner extends AppCompatActivity {
             n++;}
         else{
             m++;
-        }}
+        }}else{
+            mTTS.speak(String.valueOf(numero), TextToSpeech.QUEUE_ADD, null);
+
+        }
         lectura++;
 
     }

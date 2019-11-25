@@ -56,8 +56,22 @@ public class Juego extends AppCompatActivity {
         n2 = extras.getInt("n222");
         konfettiView = findViewById(R.id.konfettiView);
         help.setImageResource(android.R.color.transparent);
-        Operacion(n1, n2);
         countdown();
+        Operacion(n1, n2);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ayuda.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ayuda.cancel();
 
     }
 
@@ -95,9 +109,6 @@ public class Juego extends AppCompatActivity {
             signo.setText("-");
             sor.setText("Resta");
         }
-
-
-
     }
 
     public void calculadora(){
