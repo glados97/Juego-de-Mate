@@ -2,10 +2,9 @@ package com.ggo.juegodemate;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.text.Layout;
-import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 
 public class RowComponent extends LinearLayout {
 
@@ -13,6 +12,9 @@ public class RowComponent extends LinearLayout {
     private LinearLayout dos;
     private LinearLayout tres;
     private LinearLayout cuatro;
+    private ImageView uno_img, dos_img, tres_img, cuatro_img;
+    private String[] images_todo;
+
 
     public RowComponent(Context context) {
         super(context);
@@ -33,22 +35,31 @@ public class RowComponent extends LinearLayout {
         tres = (LinearLayout) findViewById(R.id.tres);
 
         cuatro = (LinearLayout) findViewById(R.id.cuatro);
+
+        uno_img = (ImageView) findViewById(R.id.img1);
+        dos_img = (ImageView) findViewById(R.id.img2);
+        tres_img = (ImageView) findViewById(R.id.img3);
+        cuatro_img = (ImageView) findViewById(R.id.img4);
+
+        images_todo = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"};
+
+
     }
 
-    public void setImage(int numero, ImageView v){
+    public void setImage(int numero, int resID){
 
         switch (numero) {
             case 1:
-                uno.addView(v);
+                uno_img.setImageResource(resID);
                 break;
             case 2:
-                dos.addView(v);
+                dos_img.setImageResource(resID);
                 break;
             case 3:
-                tres.addView(v);
+                tres_img.setImageResource(resID);
                 break;
             case 4:
-                cuatro.addView(v);
+                cuatro_img.setImageResource(resID);
                 break;
             default:
                 break;
@@ -76,8 +87,6 @@ public class RowComponent extends LinearLayout {
         }
     }
 
-
-
     public void select(int numero){
 
         switch (numero) {
@@ -97,7 +106,6 @@ public class RowComponent extends LinearLayout {
                 break;
         }
     }
-
 
 }
 

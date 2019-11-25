@@ -1,6 +1,7 @@
 <LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
 android:layout_height="80dp"
 android:background="@drawable/custom_border">
 
@@ -9,26 +10,58 @@ android:background="@drawable/custom_border">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/custom_border"></LinearLayout>
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/a" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/custom_border"></LinearLayout>
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/a" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/tres"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/custom_border"></LinearLayout>
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/a" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/cuatro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/custom_border"></LinearLayout>
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/img4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/a" />
+    </LinearLayout>
 </LinearLayout>
