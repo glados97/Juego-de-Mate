@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class Menu extends AppCompatActivity {
     private Button enviar;
     private EditText n1;
@@ -23,9 +25,14 @@ public class Menu extends AppCompatActivity {
         enviar = (Button) findViewById(R.id.enviar);
         n1 = (EditText) findViewById(R.id.n1);
         n2 = (EditText) findViewById(R.id.n2);
-        n2.setText("");
-        n1.setText("");
+
     }
+
+    public void set_text(EditText numero, int valor){
+        numero.setText(String.valueOf(valor));
+    }
+
+
 
     public void llamarJ(View v){
         String n11 = n1.getText().toString();
@@ -44,5 +51,15 @@ public class Menu extends AppCompatActivity {
         }
 
 
+    }
+
+    public void random(View v){
+        int rand = numero_random(0,50);
+        set_text(n1,rand);
+        set_text(n2,(rand)+(numero_random(1,100-rand)));
+    }
+
+    public int numero_random(int min, int max){
+        return new Random().nextInt(max - min + 1) + min;
     }
 }

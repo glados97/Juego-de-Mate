@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5663DD9E"
-    tools:context=".conteo">
+    tools:context=".Conteo">
 
     <LinearLayout
         android:layout_width="match_parent"

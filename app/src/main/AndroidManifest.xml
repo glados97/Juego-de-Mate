@@ -12,7 +12,7 @@
         <activity android:name=".JuegoMultiplicacion"></activity>
         <activity android:name=".Multiplicacion" />
         <activity android:name=".MultioConteo" />
-        <activity android:name=".conteo" />
+        <activity android:name=".Conteo" />
         <activity android:name=".Calculadora" />
         <activity android:name=".Juego" />
         <activity android:name=".Menu" />
