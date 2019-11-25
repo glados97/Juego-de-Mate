@@ -129,7 +129,7 @@ public class Juego extends AppCompatActivity {
     }
 
     public void Contar(int b){
-        Intent intent = new Intent(this, Conteo.class);
+        Intent intent = new Intent(this, ConteoPoner.class);
         onPause();
         intent.putExtra("numero", (b));
         startActivity(intent);
