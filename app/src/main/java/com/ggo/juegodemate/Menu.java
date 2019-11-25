@@ -35,10 +35,12 @@ public class Menu extends AppCompatActivity {
 
 
     public void llamarJ(View v){
-        String n11 = n1.getText().toString();
-        int n111 = Integer.parseInt(n11);
-        String n22 = n2.getText().toString();
-        int n222 = Integer.parseInt(n22);
+
+        if(!((n1.getText().toString().trim().equals(""))||(n1.getText().toString().trim().equals("")))){
+            String n11 = n1.getText().toString();
+            String n22 = n2.getText().toString();
+            int n111 = Integer.parseInt(n11);
+            int n222 = Integer.parseInt(n22);
 
         if(n111>n222 || n1.getText().toString().equals("") || n2.getText().toString().equals("") || n222>100 ){
             Toast.makeText(getBaseContext(), "Revisa el rango, hay un error", Toast.LENGTH_SHORT).show();
@@ -48,6 +50,9 @@ public class Menu extends AppCompatActivity {
             intent.putExtra("n111", (n111));
             intent.putExtra("n222",(n222));
             startActivity(intent);
+        }}else {
+            Toast.makeText(getBaseContext(), "Añade de que rango de numero quieres", Toast.LENGTH_SHORT).show();
+
         }
 
 

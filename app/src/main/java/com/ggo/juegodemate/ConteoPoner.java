@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +25,9 @@ public class ConteoPoner extends AppCompatActivity {
     private int count = 0;
     private LinearLayout tabla;
     private String[] images_todo;
+    private Button add;
+    private int cantidad_rows;
+    private int n2,m2,n,m, lectura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +35,38 @@ public class ConteoPoner extends AppCompatActivity {
         setContentView(R.layout.activity_conteo_poner);
         Bundle extras = getIntent().getExtras();
         numero = extras.getInt("numero");
-        numero_text = (TextView) findViewById(R.id.numero);
-        numero_text.setText(Integer.toString(numero));
+        //numero_text = (TextView) findViewById(R.id.numero);
+        //numero_text.setText(Integer.toString(numero));
         tabla = (LinearLayout) findViewById(R.id.tabla);
         images_todo = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"};
         set_table();
+        n = 0;
+        n2=0;
+        m=1;
+        m2=1;
+        lectura = 1;
+        add = (Button) findViewById(R.id.add);
     }
 
+    public void add_count(View v){
+        if(lectura<=numero){
+        if(!(n==0 && m==1)){
+            rows[n2].remove_backgroun(m2);
+        }
+
+        rows[n].select(m);
+        n2= n;
+        m2= m;
+
+        if(m==4){
+            m=1;
+            n++;}
+        else{
+            m++;
+        }}
+        lectura++;
+
+    }
 
     public void set_table(){
         int cantidad_rows = (numero/4);
@@ -85,7 +114,7 @@ public class ConteoPoner extends AppCompatActivity {
 
 
     public int logo_random(){
-        return (new Random().nextInt(19 + 1) );
+        return (new Random().nextInt(20) );
     }
 
     public int dpToPx(int dp) {

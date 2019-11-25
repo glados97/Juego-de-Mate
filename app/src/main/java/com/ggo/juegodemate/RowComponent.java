@@ -71,16 +71,16 @@ public class RowComponent extends LinearLayout {
 
         switch (numero) {
             case 1:
-                uno.setBackgroundColor(0);
+                uno.setBackgroundResource(R.drawable.custom_border);
                 break;
             case 2:
-                dos.setBackgroundColor(0);
+                dos.setBackgroundResource(R.drawable.custom_border);
                 break;
             case 3:
-                tres.setBackgroundColor(0);
+                tres.setBackgroundResource(R.drawable.custom_border);
                 break;
             case 4:
-                cuatro.setBackgroundColor(0);
+                cuatro.setBackgroundResource(R.drawable.custom_border);
                 break;
             default:
                 break;
@@ -91,16 +91,16 @@ public class RowComponent extends LinearLayout {
 
         switch (numero) {
             case 1:
-                uno.setBackgroundColor(Color.parseColor("34D2AF"));
+                uno.setBackgroundColor(Color.parseColor("#34D2AF"));
                 break;
             case 2:
-                dos.setBackgroundColor(Color.parseColor("34D2AF"));
+                dos.setBackgroundColor(Color.parseColor("#34D2AF"));
                 break;
             case 3:
-                tres.setBackgroundColor(Color.parseColor("34D2AF"));
+                tres.setBackgroundColor(Color.parseColor("#34D2AF"));
                 break;
             case 4:
-                cuatro.setBackgroundColor(Color.parseColor("34D2AF"));
+                cuatro.setBackgroundColor(Color.parseColor("#34D2AF"));
                 break;
             default:
                 break;
