@@ -3,13 +3,20 @@ package com.ggo.juegodemate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class Juego extends AppCompatActivity {
     private int n1;
@@ -27,6 +34,10 @@ public class Juego extends AppCompatActivity {
     private String r;
     private int rr;
     private int s;
+    private KonfettiView konfettiView;
+    private CountDownTimer ayuda;
+    private ImageView help;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +50,14 @@ public class Juego extends AppCompatActivity {
         numero2 = (TextView) findViewById(R.id.numero2);
         revisar = (Button) findViewById(R.id.revisar);
         respuesta = (EditText) findViewById(R.id.respuesta);
-
+        help = (ImageView) findViewById(R.id.hint);
         Bundle extras = getIntent().getExtras();
         n1 = extras.getInt("n111");
         n2 = extras.getInt("n222");
-
+        konfettiView = findViewById(R.id.konfettiView);
+        help.setImageResource(android.R.color.transparent);
         Operacion(n1, n2);
+        countdown();
 
     }
 
@@ -74,12 +87,12 @@ public class Juego extends AppCompatActivity {
         s = (int) (Math.random() * 2);
 
         if (s == 0) {
-            signo.setText("                +");
+            signo.setText("+");
             sor.setText("Suma");
         }
 
         if (s == 1) {
-            signo.setText("                -");
+            signo.setText("-");
             sor.setText("Resta");
         }
 
@@ -87,42 +100,7 @@ public class Juego extends AppCompatActivity {
 
     }
 
-    public void Res(View v){
-        r =(String.valueOf((respuesta.getText().toString())));
-
-        if (num1 >= num2) {
-            if (s == 0) {
-                rr = num1 + num2;
-            }
-
-            if (s == 1) {
-                rr = num1 - num2;
-            }
-        }
-        else{
-            if (s == 0) {
-                rr = num2 + num1;
-            }
-
-            if (s == 1) {
-                rr = num2 - num1;
-            }
-        }
-
-        String rrr =  Integer.toString(rr);
-        Log.d("aquirr", Integer.toString(rr));
-        Log.d("aquir", (r));
-        if (rrr.equals(r)){
-            Toast.makeText(getBaseContext(), "Correcto", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(this, Juego.class);
-            Operacion(n1,n2);
-        }
-        else{
-            Toast.makeText(getBaseContext(), "Vuelve a intentar!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void Calculadora(View v){
+    public void calculadora(){
         Intent intent = new Intent(this, Calculadora.class);
         onPause();
         startActivity(intent);
@@ -134,4 +112,95 @@ public class Juego extends AppCompatActivity {
         intent.putExtra("numero", (b));
         startActivity(intent);
     }
+
+
+    public boolean check_number(){
+        if (String.valueOf(sumaresta()).equals(respuesta.getText().toString())){
+            return true;}
+        else{
+            return false;
+        }
+    }
+
+    public int sumaresta(){
+
+        if (num1 >= num2) {
+            if (s == 0) {
+                return num1 + num2;
+            }
+
+            if (s == 1) {
+                return num1 - num2;
+            }
+        }
+        else{
+            if (s == 0) {
+                return num2 + num1;
+            }
+
+            if (s == 1) {
+                return num2 - num1;
+            }
+        }
+        return 0;
+    }
+
+    public void responder(View v){
+        if(check_number()){
+            ayuda.cancel();
+            error("Correcto!");
+            cheers(konfettiView);
+            new CountDownTimer(4000, 1000) {
+
+                public void onTick(long millisUntilFinished) {}
+
+                public void onFinish() {
+                    finish();
+                }
+            }.start();
+        }else{
+            error("Respuesta incorrecta, intentalo de nuevo");
+        }
+    }
+
+    public void countdown(){
+        ayuda = new CountDownTimer(13000, 1000) {
+
+            public void onTick(long millisUntilFinished) {}
+
+            public void onFinish() {
+                error("¿Ocupas ayuda?");
+                help();
+            }
+        }.start();
+    }
+
+    public void cheers(KonfettiView konfettiView){
+        konfettiView.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5f))
+                .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 2000L);
+    }
+
+    public void help(){
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculadora();
+            }});
+        help.setImageResource(R.drawable.ic_help_black_24dp);
+    }
+
+    public void error(String mensaje){
+        Toast.makeText(getApplicationContext(),mensaje, Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

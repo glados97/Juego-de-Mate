@@ -1,6 +1,7 @@
 package com.ggo.juegodemate;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,13 +10,23 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Random;
+
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class ConteoPoner extends AppCompatActivity {
 
@@ -28,6 +39,12 @@ public class ConteoPoner extends AppCompatActivity {
     private Button add;
     private int cantidad_rows;
     private int n2,m2,n,m, lectura;
+    private TextToSpeech mTTS;
+    private CountDownTimer ayuda;
+    private EditText ans;
+    private KonfettiView konfettiView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +52,8 @@ public class ConteoPoner extends AppCompatActivity {
         setContentView(R.layout.activity_conteo_poner);
         Bundle extras = getIntent().getExtras();
         numero = extras.getInt("numero");
+        konfettiView = findViewById(R.id.konfettiView);
+        ans = (EditText) findViewById(R.id.numero);
         //numero_text = (TextView) findViewById(R.id.numero);
         //numero_text.setText(Integer.toString(numero));
         tabla = (LinearLayout) findViewById(R.id.tabla);
@@ -45,16 +64,39 @@ public class ConteoPoner extends AppCompatActivity {
         m=1;
         m2=1;
         lectura = 1;
+        final Locale locSpanish = new Locale("spa", "MEX");
+
+        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS)
+                    mTTS.setLanguage(locSpanish);
+        }});
+
         add = (Button) findViewById(R.id.add);
     }
 
     public void add_count(View v){
+
+        add.setEnabled(false);
+
+        new CountDownTimer(700, 100) {
+
+            public void onTick(long millisUntilFinished) {}
+
+            public void onFinish() {
+                add.setEnabled(true);
+            }
+        }.start();
+
         if(lectura<=numero){
         if(!(n==0 && m==1)){
             rows[n2].remove_backgroun(m2);
         }
 
         rows[n].select(m);
+        mTTS.speak(String.valueOf(lectura), TextToSpeech.QUEUE_ADD, null);
+
         n2= n;
         m2= m;
 
@@ -123,5 +165,53 @@ public class ConteoPoner extends AppCompatActivity {
                 .density;
         return Math.round((float) dp * density);
     }
+
+    public void responder(View v){
+        if(check_number()){
+            error("Correcto!");
+            cheers(konfettiView);
+            new CountDownTimer(4000, 1000) {
+
+                public void onTick(long millisUntilFinished) {}
+
+                public void onFinish() {
+                    finish();
+                }
+            }.start();
+        }else{
+            error("Respuesta incorrecta, intentalo de nuevo");
+        }
+    }
+
+    public void cheers(KonfettiView konfettiView){
+        konfettiView.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5f))
+                .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 2000L);
+    }
+
+    public boolean check_number(){
+        if (String.valueOf(numero).equals(ans.getText().toString())){
+            return true;}
+        else{
+            return false;
+        }
+    }
+
+    public void error(String mensaje){
+        Toast.makeText(getApplicationContext(),mensaje, Toast.LENGTH_LONG).show();
+    }
+
+
+    public void countdown(){
+
+    }
+
 
 }

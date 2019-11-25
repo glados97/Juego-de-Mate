@@ -12,6 +12,7 @@
         <activity
             android:name=".ConteoPoner"
             android:label="@string/title_activity_conteo_poner"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".JuegoMultiplicacion" />
         <activity android:name=".Multiplicacion" />

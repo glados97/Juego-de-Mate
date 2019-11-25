@@ -15,6 +15,10 @@
         android:layout_margin="8dp"
         android:background="#5663DD9E"
         android:layout_weight="1">
+        <nl.dionsegijn.konfetti.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,6 +89,7 @@
                     android:id="@+id/numero"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
@@ -106,7 +111,7 @@
                 android:id="@+id/otro"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:clickable="false"
                 android:isScrollContainer="true">
 
@@ -128,7 +133,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="3.3"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -145,6 +150,8 @@
                         android:layout_weight="1"
                         android:background="#37DE6A"
                         android:clickable="true"
+                        android:focusable="false"
+                        android:onClick="responder"
                         android:text="checar" />
                 </LinearLayout>
 
@@ -162,6 +169,7 @@
                         android:layout_weight="1"
                         android:background="#37DE6A"
                         android:clickable="true"
+                        android:focusable="false"
                         android:onClick="add_count"
                         android:text="contar" />
                 </LinearLayout>
