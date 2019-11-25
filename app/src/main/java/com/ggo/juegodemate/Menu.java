@@ -40,7 +40,7 @@ public class Menu extends AppCompatActivity {
         String n22 = n2.getText().toString();
         int n222 = Integer.parseInt(n22);
 
-        if(n111>n222 || n1.getText().toString().equals("") || n2.getText().toString().equals("") ){
+        if(n111>n222 || n1.getText().toString().equals("") || n2.getText().toString().equals("") || n222>100 ){
             Toast.makeText(getBaseContext(), "Revisa el rango, hay un error", Toast.LENGTH_SHORT).show();
         }
         else{

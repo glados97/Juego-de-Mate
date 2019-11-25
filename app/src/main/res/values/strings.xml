@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Juego de Mate</string>
+    <string name="title_activity_conteo_poner">ConteoPoner</string>
 </resources>
