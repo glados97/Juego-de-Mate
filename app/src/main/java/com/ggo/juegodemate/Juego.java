@@ -1,12 +1,14 @@
 package com.ggo.juegodemate;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -118,7 +120,7 @@ public class Juego extends AppCompatActivity {
     }
 
     public void Contar(int b){
-        Intent intent = new Intent(this, ConteoPoner.class);
+        Intent intent = new Intent(this, Conteo.class);
         onPause();
         intent.putExtra("numero", (b));
         startActivity(intent);
@@ -212,6 +214,42 @@ public class Juego extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),mensaje, Toast.LENGTH_LONG).show();
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey();
+
+            //moveTaskToBack(false);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(this)
+                .setMessage("¿Deseas salir de la actividad?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        finish();
+                        //close();
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .show();
+
+    }
 
 
 }

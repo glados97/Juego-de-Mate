@@ -10,14 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ConteoPoner"
+            android:name=".Conteo"
             android:label="@string/title_activity_conteo_poner"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".JuegoMultiplicacion" />
         <activity android:name=".Multiplicacion" />
         <activity android:name=".MultioConteo" />
-        <activity android:name=".Conteo" />
         <activity android:name=".Calculadora" />
         <activity android:name=".Juego" />
         <activity android:name=".Menu" />
