@@ -175,7 +175,7 @@ public class Juego extends AppCompatActivity {
     }
 
     public void countdown(){
-        ayuda = new CountDownTimer(13000, 1000) {
+        ayuda = new CountDownTimer(2000, 10) {
 
             public void onTick(long millisUntilFinished) {}
 
